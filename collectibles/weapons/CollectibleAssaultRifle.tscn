@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://collectibles/Collectible.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/collectibles/collectible_assault_rifle.png" type="Texture" id=2]
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.9114, 6.10305 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 17.0028, 9.2075 )
+
+[node name="AssaultRifle" instance=ExtResource( 1 )]
+type = 1
+_name = "Assault rifle"
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="AreaShape2D" parent="Area2D" index="0"]
+position = Vector2( 0, 2 )
+shape = SubResource( 2 )

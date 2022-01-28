@@ -1,0 +1,138 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/weapons/pistol.png" type="Texture" id=1]
+[ext_resource path="res://weapons/Weapon.gd" type="Script" id=2]
+[ext_resource path="res://weapons/pistol/PistolBullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/shader_materials/player_alpha.shader" type="Shader" id=4]
+
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 4 )
+shader_param/invulnerable = null
+
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=4]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=6]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[node name="Weapon" type="Sprite"]
+material = SubResource( 1 )
+texture = ExtResource( 1 )
+hframes = 6
+frame = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+Bullet = ExtResource( 3 )
+fire_rate = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/crouch = SubResource( 2 )
+anims/diagonal_down = SubResource( 3 )
+anims/diagonal_up = SubResource( 4 )
+anims/down = SubResource( 5 )
+anims/idle = SubResource( 6 )
+anims/up = SubResource( 7 )
+
+[node name="UpMuzzle" type="Position2D" parent="."]
+position = Vector2( 11, -26 )
+
+[node name="DUpMuzzle" type="Position2D" parent="."]
+position = Vector2( 25, -20 )
+
+[node name="IdleMuzzle" type="Position2D" parent="."]
+position = Vector2( 31, -1 )
+
+[node name="DDownMuzzle" type="Position2D" parent="."]
+position = Vector2( 24, 19 )
+
+[node name="DownMuzzle" type="Position2D" parent="."]
+position = Vector2( 15, 22 )
+
+[node name="CrouchMuzzle" type="Position2D" parent="."]
+position = Vector2( 27, 11 )
+
+[node name="GunTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+[connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]

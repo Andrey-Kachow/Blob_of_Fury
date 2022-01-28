@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/north_pole_tileset_1_test.png" type="Texture" id=1]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/resources/solid_snow.tres" type="TileSet" id=3]
+[ext_resource path="res://collectibles/bounties/Cherry.tscn" type="PackedScene" id=4]
+[ext_resource path="res://collectibles/weapons/CollectibleAssaultRifle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/Level.gd" type="Script" id=6]
+[ext_resource path="res://ui/HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/resources/snow.tres" type="TileSet" id=8]
+[ext_resource path="res://assets/resources/crates.tres" type="TileSet" id=9]
+[ext_resource path="res://assets/environment/backgrounds/north_pole_back.png" type="Texture" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 207.5, 128 )
+
+[node name="TestSetup" type="Node"]
+script = ExtResource( 6 )
+
+[node name="OnewayEnvironment" type="TileMap" parent="."]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 2
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -1834985, 17, 0, -1834984, 5, 0, -1834983, 16, 0, -1769448, 29, 0, -1703928, 17, 0, -1703927, 2, 0, -1703926, 0, 0, -1703925, 0, 0, -1703924, 15, 0, -1638391, 23, 0, -1638389, 22, 0, -1572851, 17, 0, -1572850, 5, 0, -1572849, 15, 0, -1507314, 29, 0, -1376240, 17, 0, -1376239, 2, 0, -1376238, 0, 0, -1376237, 1, 0, -1376236, 5, 0, -1376235, 0, 0, -1376234, 1, 0, -1376233, 0, 0, -1376232, 0, 0, -1376231, 15, 0, -1310703, 10, 0, -1310702, 10, 0, -1310701, 10, 0, -1310700, 10, 0, -1310699, 10, 0, -1310698, 10, 0, -1310697, 10, 0, -1310696, 10, 0, -1245167, 10, 0, -1245166, 10, 0, -1245165, 10, 0, -1245164, 10, 0, -1245163, 10, 0, -1245162, 10, 0, -1245161, 10, 0, -1245160, 10, 0, -1179631, 13, 0, -1179630, 13, 0, -1179629, 13, 0, -1179628, 13, 0, -1179627, 13, 0, -1179626, 13, 0, -1179625, 13, 0, -1179624, 13, 0, -1114095, 8, 0, -1114094, 8, 0, -1114093, 8, 0, -1114092, 8, 0, -1114091, 8, 0, -1114090, 8, 0, -1114089, 8, 0, -1114088, 8, 0, -1048558, 8, 0, -1048557, 8, 0, -1048556, 8, 0, -1048555, 8, 0, -1048554, 8, 0, -1048553, 8, 0, -393209, 8, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Crates" type="TileMap" parent="."]
+tile_set = ExtResource( 9 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -1834999, 5, 0, -1179627, 6, 0, -1114107, 3, 0, -720925, 2, 0, -720911, 1, 0, -786426, 0, 0, -786417, 2, 0, -655337, 4, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CrateContainer" type="Node" parent="."]
+
+[node name="BulletContainer" type="Node" parent="."]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( -43, -269 )
+
+[node name="CollectibleContainer" type="Node" parent="."]
+
+[node name="AssaultRifle" parent="CollectibleContainer" instance=ExtResource( 5 )]
+position = Vector2( 63.3982, -277.408 )
+
+[node name="Cherry" parent="CollectibleContainer" instance=ExtResource( 4 )]
+position = Vector2( 53.4745, -309.752 )
+
+[node name="SolidEnvironment" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -1048568, 27, 0, -1048566, 1, 0, -1048565, 13, 0, -1048560, 16, 0, -1048559, 2, 0, -1048558, 5, 0, -1048557, 1, 0, -1048556, 1, 0, -1048555, 2, 0, -1048554, 5, 0, -1048553, 3, 0, -1048552, 2, 0, -1048551, 14, 0, -983038, 27, 0, -983036, 4, 0, -983030, 19, 0, -983023, 21, 0, -983021, 7, 0, -983020, 6, 0, -983019, 8, 0, -983018, 11, 0, -983017, 22, 0, -917504, 27, 0, -917500, 10, 0, -917499, 9, 0, -917498, 11, 0, -917497, 11, 0, -917496, 22, 0, -917485, 21, 0, -917483, 22, 0, -786433, 15, 0, -851966, 9, 0, -851965, 8, 0, -851964, 11, 0, -851963, 11, 0, -851962, 22, 0, -786432, 21, 0, -786430, 23, 0, -786429, 24, 0, -786428, 22, 0, -458796, 2, 0, -458795, 2, 0, -458794, 2, 0, -458793, 2, 0, -458792, 2, 0, -458791, 2, 0, -458790, 2, 0, -458789, 2, 0, -458788, 2, 0, -458787, 2, 0, -458786, 2, 0, -458785, 2, 0, -458784, 2, 0, -458783, 2, 0, -458782, 2, 0, -458781, 2, 0, -458780, 2, 0, -458779, 2, 0, -458778, 2, 0, -458777, 2, 0, -458776, 2, 0, -458775, 2, 0, -458774, 2, 0, -458773, 2, 0, -458772, 2, 0, -458771, 2, 0, -458770, 2, 0, -458769, 2, 0, -524275, 15, 0, -524274, 2, 0, -524273, 2, 0, -524272, 2, 0, -524271, 2, 0, -524270, 2, 0, -524269, 2, 0, -524268, 2, 0, -524267, 2, 0, -524266, 2, 0, -524265, 2, 0, -524264, 2, 0, -524263, 2, 0, -524262, 2, 0, -524261, 14, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
+position = Vector2( -48, 0 )
+shape = SubResource( 1 )
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+motion_scale = Vector2( 0.2, 0.4 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 10 )
+
+[node name="PlayerSpawn" type="Position2D" parent="."]
+position = Vector2( -440, -296 )
+[connection signal="weapon_scene_changed" from="Player" to="." method="_on_Player_weapon_scene_changed"]
